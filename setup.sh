@@ -1,0 +1,11 @@
+#!/bin/bash
+
+export XDG_CONFIG_HOME="$HOME"/.config
+mkdir -p "$XDG_CONFIG_HOME"
+mkdir -p "$XDG_CONFIG_HOME"/nixpkgs
+
+# symlink configs
+ln -sf "$PWD/config.nix" "$XDG_CONFIG_HOME"/nixpkgs/config.nix
+
+# install Nix packages from config.nix
+nix-env -iA nixpkgs.myPackages
