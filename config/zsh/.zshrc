@@ -1,4 +1,4 @@
-source ~/.bash_profile
+source ${HOME}/.bash_profile
 
 HISTSIZE=10000000
 SAVEHIST=10000000
@@ -17,10 +17,21 @@ setopt HIST_NO_STORE
 setopt HIST_REDUCE_BLANKS
 HIST_STAMPS="yyyy-mm-dd"
 
-export LG_CONFIG_FILE="$HOME/dev/.dotfiles/.lazygit_config"
+alias sn="storenet"
+alias vi="nvim"
+alias gl="lazygit"
+
+source ~/.nix-profile/share/zsh-vi-mode/zsh-vi-mode.zsh
+
 source <(fzf --zsh)
 
 type starship_zle-keymap-select > /dev/null || \
 {
   eval "$(starship init zsh)"
 }
+
+source ~/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[path_prefix]=none
