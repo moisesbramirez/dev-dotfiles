@@ -1,0 +1,30 @@
+notARepository: 'quit'
+git:
+  pagers:
+    - externalDiffCommand: difft --color=always --display=inline --syntax-highlight=off
+    - pager: diff-so-fancy
+os:
+  editInTerminal: true
+  editPreset: nvim
+gui:
+  showBottomLine: false
+  enlargedSideViewLocation: top
+keybinding:
+  files:
+    commitChangesWithoutHook: <disabled>
+customCommands:
+  - key: w
+    prompts:
+      - type: input
+        title: Commit summary
+        initialValue: ''
+    description: Commit changes without pre-commit hook
+    command: git commit -n -m '{{index .PromptResponses 0}}'
+    context: files
+  - key: o
+    context: localBranches
+    command: gh pr create --fill
+    description: Create pull request and auto fill via gh
+    loadingText: Creating Pull Request...
+    outputTitle: GH
+    output: popup

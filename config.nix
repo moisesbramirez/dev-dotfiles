@@ -4,9 +4,12 @@
       name = "dev-tools";
       paths = [
         bat
+        diff-so-fancy
+        difftastic
         fd
         fzf
         lazygit
+        gh
         neovim
         ripgrep
         stow
