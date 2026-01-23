@@ -3,6 +3,7 @@
     myPackages = pkgs.buildEnv {
       name = "dev-tools";
       paths = [
+        ast-grep
         bat
         diff-so-fancy
         difftastic
@@ -14,6 +15,7 @@
         ripgrep
         stow
         starship
+        tree-sitter
         zsh
         zsh-syntax-highlighting
         zsh-vi-mode

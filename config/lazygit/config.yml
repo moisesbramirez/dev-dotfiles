@@ -1,11 +1,13 @@
-notARepository: 'quit'
+notARepository: "quit"
 git:
   pagers:
+    - pager: ""
     - externalDiffCommand: difft --color=always --display=inline --syntax-highlight=off
     - pager: diff-so-fancy
 os:
+  editPreset: "nvim"
   editInTerminal: true
-  editPreset: nvim
+promptToReturnFromSubprocess: false
 gui:
   showBottomLine: false
   enlargedSideViewLocation: top
@@ -17,7 +19,7 @@ customCommands:
     prompts:
       - type: input
         title: Commit summary
-        initialValue: ''
+        initialValue: ""
     description: Commit changes without pre-commit hook
     command: git commit -n -m '{{index .PromptResponses 0}}'
     context: files
