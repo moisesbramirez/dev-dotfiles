@@ -5,12 +5,14 @@
       paths = [
         ast-grep
         bat
+        delve
         diff-so-fancy
         difftastic
         fd
         fzf
         lazygit
         gh
+        golint
         neovim
         ripgrep
         stow
