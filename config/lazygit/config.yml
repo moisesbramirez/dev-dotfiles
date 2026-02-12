@@ -1,13 +1,15 @@
 notARepository: "quit"
+quitOnTopLevelReturn: true
+promptToReturnFromSubprocess: false
 git:
   pagers:
     - pager: ""
     - externalDiffCommand: difft --color=always --display=inline --syntax-highlight=off
     - pager: diff-so-fancy
 os:
+  copyToClipboardCmd: printf "\033]52;c;$(printf {{text}} | base64 -w 0)\a" > /dev/tty
   editPreset: "nvim"
   editInTerminal: true
-promptToReturnFromSubprocess: false
 gui:
   showBottomLine: false
   enlargedSideViewLocation: top
