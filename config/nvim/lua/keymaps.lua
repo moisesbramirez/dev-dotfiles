@@ -26,7 +26,7 @@ vim.keymap.set("n", "n", "nzzzv", { desc = "Keep search terms center of page nex
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Keep search terms center of page previous" });
 
 -- Editing
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank into systemp clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank into system clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Don't replace 'copy content' when replacing" })
 vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
   { desc = "Start search and replace on cursor" })

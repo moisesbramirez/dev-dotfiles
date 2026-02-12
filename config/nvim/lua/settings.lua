@@ -5,7 +5,7 @@ vim.wo.number = true
 vim.o.relativenumber = true
 
 -- Disable horizontal scrolling.
-vim.o.mousescroll = 'ver:3,hor:0'
+vim.o.mousescroll = "ver:3,hor:0"
 
 -- Wrap long lines at words.
 vim.o.linebreak = true
