@@ -5,6 +5,7 @@ return {
     lazy = false,
     priority = 1001,
     opts = function()
+      local flatten = require("flatten")
       ---@type Terminal?
       local saved_terminal
 
@@ -23,13 +24,7 @@ return {
             saved_terminal = term.get(termid)
           end,
 
-          post_open = function(bufnr, winnr, ft, is_blocking)
-            if is_blocking and saved_terminal then
-              saved_terminal:close()
-            else
-              vim.api.nvim_set_current_win(winnr)
-            end
-          end,
+          post_open = flatten.hooks.post_open,
 
           block_end = function()
             vim.schedule(function()
