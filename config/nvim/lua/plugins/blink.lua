@@ -7,7 +7,17 @@ return {
       cmdline = { enabled = true },
       appearance = { nerd_font_variant = "mono" },
       fuzzy = { implementation = "prefer_rust" },
-      sources = { default = { "lsp", "snippets", "buffer", "path" } },
+      sources = {
+        default = {
+          "lsp",
+          "snippets",
+          "buffer",
+          "path",
+        },
+        per_filetype = {
+          codecompanion = { "codecompanion" },
+        },
+      },
       keymap = {
         ['<Tab>'] = {
           function(cmp)

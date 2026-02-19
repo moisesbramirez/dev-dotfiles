@@ -1,22 +1,27 @@
 {
+  allowUnfree = true;
   packageOverrides = pkgs: with pkgs; {
     myPackages = pkgs.buildEnv {
       name = "dev-tools";
       paths = [
         ast-grep
         bat
+        claude-code
+        claude-code-acp
         delve
         diff-so-fancy
         difftastic
         fd
         fzf
-        lazygit
         gh
         golint
+        jq
+        lazygit
         neovim
+        opencode
         ripgrep
-        stow
         starship
+        stow
         tree-sitter
         zsh
         zsh-syntax-highlighting

@@ -22,6 +22,8 @@ HIST_STAMPS="yyyy-mm-dd"
 alias sn="storenet"
 alias vi="nvim"
 alias gg="lazygit"
+alias cat="bat"
+alias cld="claude"
 
 source ~/.nix-profile/share/zsh-vi-mode/zsh-vi-mode.zsh
 
