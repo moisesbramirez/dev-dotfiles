@@ -19,6 +19,7 @@
         lazygit
         neovim
         opencode
+        pre-commit
         ripgrep
         starship
         stow
