@@ -8,6 +8,7 @@ return {
         "cssls",
         "eslint",
         "ember",
+        "golangci-lint",
         "golangci_lint_ls",
         "gopls",
         "harper_ls",
