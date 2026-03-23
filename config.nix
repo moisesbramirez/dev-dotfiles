@@ -7,7 +7,6 @@
         ast-grep
         bat
         claude-code
-        claude-code-acp
         delve
         diff-so-fancy
         difftastic
