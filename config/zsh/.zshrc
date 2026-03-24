@@ -1,4 +1,5 @@
 source ${HOME}/.bash_profile
+source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 HISTSIZE=10000000
 SAVEHIST=$HISTSIZE
@@ -25,17 +26,13 @@ alias gg="lazygit"
 alias cat="bat"
 alias cld="claude"
 
-source ~/.nix-profile/share/zsh-vi-mode/zsh-vi-mode.zsh
-
 source <(fzf --zsh)
 
-type starship_zle-keymap-select > /dev/null || \
-{
-  eval "$(starship init zsh)"
-}
 
-source ~/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+
+eval "$(starship init zsh)"

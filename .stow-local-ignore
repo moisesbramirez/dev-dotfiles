@@ -2,4 +2,3 @@
 \.gitignore
 ^/setup.sh
 ^/README.md
-^/config.nix
