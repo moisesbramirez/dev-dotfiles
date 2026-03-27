@@ -5,8 +5,9 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "ravitemer/mcphub.nvim",
+      "ravitemer/codecompanion-history.nvim",
     },
-    version = "^18.0.0",
+    version = "^19.0.0",
     event = "VeryLazy",
     config = function()
       require("codecompanion").setup({
@@ -20,7 +21,14 @@ return {
                 description = "Options",
                 hide = true,
               },
-            }
+            },
+            tools = {
+              ["grep_search"] = {
+                enabled = function(adapter)
+                  return vim.fn.executable("rg") == 1
+                end,
+              },
+            },
           },
           inline = {
             adapter = "claude_code",
@@ -28,9 +36,19 @@ return {
           cmd = {
             adapter = "claude_code",
           },
+          cli = {
+            agent = "claude_code",
+            agents = {
+              claude_code = {
+                cmd = "claude",
+                args = {},
+                description = "Claude Code CLI",
+                provider = "terminal",
+              },
+            },
+          },
         },
         adapters = {
-          http = {},
           acp = {
             claude_code = function()
               return require("codecompanion.adapters").extend("claude_code", {
@@ -40,6 +58,22 @@ return {
                 },
               })
             end,
+          },
+        },
+        extensions = {
+          mcphub = {
+            callback = "mcphub.extensions.codecompanion",
+            opts = {
+              make_vars = true,
+              make_slash_commands = true,
+              show_result_in_chat = true
+            }
+          },
+          history = {
+            enabled = true,
+            opts = {
+              dir_to_save = vim.fn.stdpath("data") .. "/codecompanion_chats.json",
+            }
           },
         },
       })
