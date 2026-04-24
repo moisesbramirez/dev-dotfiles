@@ -51,10 +51,17 @@ return {
         adapters = {
           acp = {
             claude_code = function()
+              local fetch_token = function(user)
+                if user == "dev" then
+                  return "cmd:jq -r '.claudeAiOauth.accessToken' /home/dev/.claude/.credentials.json < 2>/dev/null"
+                else
+                  return "cmd:security find-generic-password -s 'Claude Code-credentials' -w |jq -r '.claudeAiOauth.accessToken'"
+                end
+              end
+
               return require("codecompanion.adapters").extend("claude_code", {
                 env = {
-                  CLAUDE_CODE_OAUTH_TOKEN =
-                  "cmd:jq -r '.claudeAiOauth.accessToken' < /home/dev/.claude/.credentials.json 2>/dev/null",
+                  CLAUDE_CODE_OAUTH_TOKEN = fetch_token(vim.env.USER),
                 },
               })
             end,
