@@ -31,28 +31,22 @@ autocmd({ "WinEnter", "BufWinEnter", "TermOpen" }, {
   end,
 })
 
-autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("LspAttachGroup", {}),
-  desc = "On-Save behaviors provided via LSP",
+autocmd("BufWritePre", {
+  group = vim.api.nvim_create_augroup("EslintAutoFix", { clear = false }),
+  desc = "Run EsLint with --fix",
+  pattern = { "*.ts", "*.js", "*.mjs", "*.cjs" },
   callback = function(args)
-    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+    local client = vim.lsp.get_clients({
+      name = "eslint",
+      bufnr = vim.api.nvim_get_current_buf(),
+    })
 
-    if client:supports_method("textDocument/formatting") then
-      autocmd("BufWritePre", {
-        group = vim.api.nvim_create_augroup("LspAutoFormat", { clear = false }),
-        desc = "Format via LSP",
-        buffer = args.buf,
-        callback = function()
-          vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
-        end,
-      })
+    if not client then
+      require("conform").format()
+      return
     end
 
-    autocmd("BufWritePre", {
-      group = vim.api.nvim_create_augroup("EslintAutoFix", { clear = false }),
-      desc = "Run EsLint with --fix",
-      pattern = { "*.ts", "*.js", "*.mjs", "*.cjs" },
-      command = "silent! LspEslintFixAll",
-    })
+    vim.cmd("LspEslintFixAll")
+    require("conform").format()
   end,
 })
