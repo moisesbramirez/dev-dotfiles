@@ -21,11 +21,11 @@ stow -t $XDG_CONFIG_HOME config
 stow --ignore=config -t $HOME .
 
 echo "Installing pnpm packages..."
-pnpm -g install tree-sitter-cli
-pnpm approve-builds -g --all
-pnpm -g install @anthropic-ai/claude-code @agentclientprotocol/claude-agent-acp
+pnpm -g install --allow-build=tree-sitter-cli tree-sitter-cli
+pnpm -g install --allow-build=@anthropic-ai/claude-code @anthropic-ai/claude-code
+pnpm -g install @agentclientprotocol/claude-agent-acp
 
 echo "Setting gh token..."
 if [ -f /run/secrets/gh_token ] && [ -s /run/secrets/gh_token ]; then
-  gh auth login -h github.com --with-token < /run/secrets/gh_token;
+  gh auth login -h github.com --with-token </run/secrets/gh_token
 fi
