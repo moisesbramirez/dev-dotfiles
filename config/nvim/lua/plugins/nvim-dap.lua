@@ -22,12 +22,6 @@ return {
             request = "attach",
             mode = "remote",
             port = "3004",
-            substitutePath = {
-              {
-                from = "${workspaceFolder}",
-                to = "/home/dev/storenet/go/src/rn",
-              }
-            },
           },
           {
             type = "go",

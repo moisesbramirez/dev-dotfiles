@@ -5,7 +5,7 @@ HISTSIZE=10000000
 SAVEHIST=$HISTSIZE
 HISTDUP="erase"
 
-HISTORY_IGNORE="(ls|cd|pwd|exit|cd|nvim|lazygit|storenet|dev|dot|pv|dt|sn)*"
+HISTORY_IGNORE="(ls|cd|pwd|exit|cd|nvim|lazygit|dev|dot)*"
 
 setopt EXTENDED_HISTORY
 setopt INC_APPEND_HISTORY
@@ -20,7 +20,6 @@ setopt HIST_NO_STORE
 setopt HIST_REDUCE_BLANKS
 HIST_STAMPS="yyyy-mm-dd"
 
-alias sn="storenet"
 alias vi="nvim"
 alias gg="lazygit"
 alias cat="bat"
